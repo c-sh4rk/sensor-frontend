@@ -1,0 +1,27 @@
+<table>
+  <thead>
+    <tr>
+      <th>Timestamp</th>
+      <th>SensorId</th>
+      <th>Type</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let v of lastValues">
+      <td>{{ v.timestamp | date:'mediumDate' }} {{ v.timestamp | date:'mediumTime' }}</td>
+      <td><code>{{ v.sensorId }}</code></td>
+      <td>
+        <span *ngIf="v.type == 'temperature'">🌡 Temperature</span>
+        <span *ngIf="v.type == 'humidity'">💧 Humidity</span>
+      </td>
+      <td>
+        {{ v.value | number:'1.1-1' }}
+        <span *ngIf="v.type == 'humidity'"> %</span>
+        <span *ngIf="v.type == 'temperature'">°C</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<span *ngIf="loading">Loading...</span>
