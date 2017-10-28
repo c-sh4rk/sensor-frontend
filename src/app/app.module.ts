@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { ApiService } from './shared/api.service';
@@ -21,6 +22,7 @@ import { RangeChartComponent } from './range-chart/range-chart.component';
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
     NgxChartsModule
   ],
   providers: [ApiService],

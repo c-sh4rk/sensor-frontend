@@ -1,7 +1,44 @@
+<select name="selectedSensor" [(ngModel)]="selectedSensor">
+  <option *ngFor="let s of sensors" [ngValue]="s">{{ s.sensorId }} ({{ s.type }})</option>
+</select>
+
+<br>
+<br>
+
+Start:<br>
+<button (click)="setStart('24hago')">24 h ago</button>
+<button (click)="setStart('12hago')">12 h ago</button>
+<button (click)="setStart('3hago')">3 h ago</button>
+<button (click)="setStart('1hago')">1 h ago</button>
+<button (click)="setStart('now')">now</button>
+{{ start }}
+
+<br>
+<br>
+End:<br>
+<button (click)="setEnd('24hago')">24 h ago</button>
+<button (click)="setEnd('12hago')">12 h ago</button>
+<button (click)="setEnd('3hago')">3 h ago</button>
+<button (click)="setEnd('1hago')">1 h ago</button>
+<button (click)="setEnd('now')">now</button>
+{{ end }}
+
+<br>
+<br>
+
+<button (click)="refreshValues()">Refresh</button>
+
+
+<div>
 <ngx-charts-line-chart
+  *ngIf="loaded"
   [results]="data"
   [xAxis]="true"
   [yAxis]="true"
   [legend]="false"
-  [autoScale]="true">
+  [autoScale]="true"
+  [tooltipDisabled]="true"
+  [animations]="false"
+  [curve]="curve">
 </ngx-charts-line-chart>
+</div>
