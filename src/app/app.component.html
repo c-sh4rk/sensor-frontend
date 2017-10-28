@@ -1,8 +1,17 @@
-<h1>Sensors</h1>
+<div class="container">
 
-<a routerLink="/last-values">Last Values</a>
-<a routerLink="/range-chart">Range Chart</a>
+  <h1>Sensors</h1>
 
-<hr>
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/last-values" routerLinkActive="active">Last Values</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/range-chart" routerLinkActive="active">Range Chart</a>
+    </li>
+  </ul>
 
-<router-outlet></router-outlet>
+
+  <router-outlet></router-outlet>
+
+</div>

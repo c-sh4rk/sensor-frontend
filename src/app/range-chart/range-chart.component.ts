@@ -12,6 +12,8 @@ import 'rxjs/add/operator/filter';
 export class RangeChartComponent implements OnInit {
 
   loaded = false;
+  loading = false;
+
   curve = shape.curveBasis;
   sensors = [];
   start: string;
@@ -29,14 +31,13 @@ export class RangeChartComponent implements OnInit {
   constructor(private as: ApiService) { }
 
   ngOnInit() {
-    this.start = '24hago';
+    this.start = '3hago';
     this.end = 'now';
 
     this.as.getSensorList()
       .subscribe(ss => {
         this.sensors = ss;
         this.selectedSensor = this.sensors[0];
-        this.refreshValues();
       });
   }
 
@@ -63,6 +64,7 @@ export class RangeChartComponent implements OnInit {
     const type = this.selectedSensor.type;
 
     this.loaded = false;
+    this.loading = true;
     return this.as.getRangeValues(sensorId, type, this.getTimestamp(this.start), this.getTimestamp(this.end))
       .filter(e => !!e)
       .map(vs => vs.map(v => ({
@@ -72,6 +74,7 @@ export class RangeChartComponent implements OnInit {
       .subscribe(vs => {
         this.data[0].series = vs;
         this.loaded = true;
+        this.loading = false;
       });
   }
 
