@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class ApiService {
-  api = 'http://10.125.4.100/sensor-api/api.php';
+  api = '/sensor-api/api.php';
 
 
   constructor(private http: HttpClient) { }
